@@ -26,7 +26,7 @@ func main() {
   time_list := parser.Time(text)
   // ['5:00PM', '4:00']
   link_list := parser.Links(text)
-  // ['www.linkedin.com']
+  // ['www.linkedin.com', 'harold.smith@gmail.com']
   phone_list := parser.PhonesWithExts(text)  
   // ['(519)-236-2723x341']
   email_list := parser.Emails(text)
