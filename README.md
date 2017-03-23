@@ -1,5 +1,7 @@
 # commonregex
 
+![build](https://travis-ci.org/mingrammer/commonregex.svg?branch=master)
+
 > Inspired by [CommonRegex](https://github.com/madisonmay/CommonRegex)
 
 This is a collection of often used regular expressions. It provides these as simple functions for getting the matched strings corresponding to specific patterns.
