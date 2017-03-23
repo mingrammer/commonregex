@@ -1,6 +1,6 @@
-# commonregex
+[![Go Report Card](https://goreportcard.com/badge/github.com/mingrammer/commonregex)](https://goreportcard.com/report/github.com/mingrammer/commonregex) ![build](https://travis-ci.org/mingrammer/commonregex.svg?branch=master)
 
-![build](https://travis-ci.org/mingrammer/commonregex.svg?branch=master)
+# commonregex
 
 > Inspired by [CommonRegex](https://github.com/madisonmay/CommonRegex)
 
