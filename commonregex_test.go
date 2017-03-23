@@ -192,7 +192,6 @@ func TestCommonRegex_HexColors(t *testing.T) {
 		"#fff",
 		"#123",
 		"#4e32ff",
-		"#12345678",
 	}
 	failing_tests := []string{
 		"#zzz",
