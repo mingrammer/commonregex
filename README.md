@@ -19,19 +19,17 @@ import (
 )
 
 func main() {
-  parser := cregex.New()
-  
   text := `John, please get that article on www.linkedin.com to me by 5:00PM on Jan 9th 2012. 4:00 would be ideal, actually. If you have any questions, You can reach me at (519)-236-2723x341 or get in touch with my associate at harold.smith@gmail.com`
   
-  date_list := parser.Date(text)
+  date_list := cregex.Date(text)
   // ['Jan 9th 2012']
-  time_list := parser.Time(text)
+  time_list := cregex.Time(text)
   // ['5:00PM', '4:00']
-  link_list := parser.Links(text)
+  link_list := cregex.Links(text)
   // ['www.linkedin.com', 'harold.smith@gmail.com']
-  phone_list := parser.PhonesWithExts(text)  
+  phone_list := cregex.PhonesWithExts(text)  
   // ['(519)-236-2723x341']
-  email_list := parser.Emails(text)
+  email_list := cregex.Emails(text)
   // ['harold.smith@gmail.com']
 }
 ```
