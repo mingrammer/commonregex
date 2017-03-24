@@ -6,7 +6,6 @@ import (
 )
 
 func TestCommonRegex_Date(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"3-23-17",
 		"3.23.17",
@@ -17,7 +16,7 @@ func TestCommonRegex_Date(t *testing.T) {
 		"23 Mar 2017",
 	}
 	for _, test := range tests {
-		parsed := parser.Date(test)
+		parsed := Date(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
@@ -25,7 +24,6 @@ func TestCommonRegex_Date(t *testing.T) {
 }
 
 func TestCommonRegex_Time(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"09:45",
 		"9:45",
@@ -36,7 +34,7 @@ func TestCommonRegex_Time(t *testing.T) {
 		"9:00 pm",
 	}
 	for _, test := range tests {
-		parsed := parser.Time(test)
+		parsed := Time(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
@@ -44,7 +42,6 @@ func TestCommonRegex_Time(t *testing.T) {
 }
 
 func TestCommonRegex_Phones(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"12345678900",
 		"1234567890",
@@ -59,7 +56,7 @@ func TestCommonRegex_Phones(t *testing.T) {
 		"+442345678900",
 	}
 	for _, test := range tests {
-		parsed := parser.Phones(test)
+		parsed := Phones(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
@@ -67,7 +64,6 @@ func TestCommonRegex_Phones(t *testing.T) {
 }
 
 func TestCommonRegex_PhonesWithExts(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"(523)222-8888 ext 527",
 		"(523)222-8888x623",
@@ -78,7 +74,7 @@ func TestCommonRegex_PhonesWithExts(t *testing.T) {
 		"(523) 222-8888 x 623",
 	}
 	for _, test := range tests {
-		parsed := parser.PhonesWithExts(test)
+		parsed := PhonesWithExts(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
@@ -86,7 +82,6 @@ func TestCommonRegex_PhonesWithExts(t *testing.T) {
 }
 
 func TestCommonRegex_Links(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"www.google.com",
 		"http://www.google.com",
@@ -96,7 +91,7 @@ func TestCommonRegex_Links(t *testing.T) {
 		"google.com",
 	}
 	for _, test := range tests {
-		parsed := parser.Links(test)
+		parsed := Links(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
@@ -104,7 +99,6 @@ func TestCommonRegex_Links(t *testing.T) {
 }
 
 func TestCommonRegex_Emails(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"john.smith@gmail.com",
 		"john_smith@gmail.com",
@@ -114,13 +108,13 @@ func TestCommonRegex_Emails(t *testing.T) {
 		"john.smith@gmail..com",
 	}
 	for _, test := range tests {
-		parsed := parser.Emails(test)
+		parsed := Emails(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
 	}
 	for _, test := range failingTests {
-		parsed := parser.Emails(test)
+		parsed := Emails(test)
 		if reflect.DeepEqual(parsed, []string{test}) {
 			t.Errorf("%s should not be equal with %s", parsed, []string{test})
 		}
@@ -128,14 +122,13 @@ func TestCommonRegex_Emails(t *testing.T) {
 }
 
 func TestCommonRegex_IPs(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"127.0.0.1",
 		"192.168.1.1",
 		"8.8.8.8",
 	}
 	for _, test := range tests {
-		parsed := parser.IPs(test)
+		parsed := IPs(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
@@ -143,7 +136,6 @@ func TestCommonRegex_IPs(t *testing.T) {
 }
 
 func TestCommonRegex_IPv6s(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"fe80:0000:0000:0000:0204:61ff:fe9d:f156",
 		"fe80:0:0:0:204:61ff:fe9d:f156",
@@ -153,7 +145,7 @@ func TestCommonRegex_IPv6s(t *testing.T) {
 		"::1",
 	}
 	for _, test := range tests {
-		parsed := parser.IPv6s(test)
+		parsed := IPv6s(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
@@ -161,7 +153,6 @@ func TestCommonRegex_IPv6s(t *testing.T) {
 }
 
 func TestCommonRegex_Prices(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"$1.23",
 		"$1",
@@ -173,13 +164,13 @@ func TestCommonRegex_Prices(t *testing.T) {
 		"$100.000",
 	}
 	for _, test := range tests {
-		parsed := parser.Prices(test)
+		parsed := Prices(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
 	}
 	for _, test := range failingTests {
-		parsed := parser.Prices(test)
+		parsed := Prices(test)
 		if reflect.DeepEqual(parsed, []string{test}) {
 			t.Errorf("%s should not be equal with %s", parsed, []string{test})
 		}
@@ -187,7 +178,6 @@ func TestCommonRegex_Prices(t *testing.T) {
 }
 
 func TestCommonRegex_HexColors(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"#fff",
 		"#123",
@@ -197,13 +187,13 @@ func TestCommonRegex_HexColors(t *testing.T) {
 		"#zzz",
 	}
 	for _, test := range tests {
-		parsed := parser.HexColors(test)
+		parsed := HexColors(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
 	}
 	for _, test := range failingTests {
-		parsed := parser.HexColors(test)
+		parsed := HexColors(test)
 		if reflect.DeepEqual(parsed, []string{test}) {
 			t.Errorf("%s should not be equal with %s", parsed, []string{test})
 		}
@@ -211,7 +201,6 @@ func TestCommonRegex_HexColors(t *testing.T) {
 }
 
 func TestCommonRegex_CreditCards(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"0000-0000-0000-0000",
 		"0123456789012345",
@@ -219,7 +208,7 @@ func TestCommonRegex_CreditCards(t *testing.T) {
 		"012345678901234",
 	}
 	for _, test := range tests {
-		parsed := parser.CreditCards(test)
+		parsed := CreditCards(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
@@ -227,7 +216,6 @@ func TestCommonRegex_CreditCards(t *testing.T) {
 }
 
 func TestCommonRegex_BtcAddresses(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"1LgqButDNV2rVHe9DATt6WqD8tKZEKvaK2",
 		"19P6EYhu6kZzRy9Au4wRRZVE8RemrxPbZP",
@@ -241,13 +229,13 @@ func TestCommonRegex_BtcAddresses(t *testing.T) {
 		"1Bow5EMqtDGV5n5xZVgdpR",
 	}
 	for _, test := range tests {
-		parsed := parser.BtcAddresses(test)
+		parsed := BtcAddresses(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
 	}
 	for _, test := range failingTests {
-		parsed := parser.BtcAddresses(test)
+		parsed := BtcAddresses(test)
 		if reflect.DeepEqual(parsed, []string{test}) {
 			t.Errorf("%s should not be equal with %s", parsed, []string{test})
 		}
@@ -255,7 +243,6 @@ func TestCommonRegex_BtcAddresses(t *testing.T) {
 }
 
 func TestCommonRegex_StreetAddresses(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"101 main st.",
 		"504 parkwood drive",
@@ -266,13 +253,13 @@ func TestCommonRegex_StreetAddresses(t *testing.T) {
 		"101 main straight",
 	}
 	for _, test := range tests {
-		parsed := parser.StreetAddresses(test)
+		parsed := StreetAddresses(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
 	}
 	for _, test := range failingTests {
-		parsed := parser.StreetAddresses(test)
+		parsed := StreetAddresses(test)
 		if reflect.DeepEqual(parsed, []string{test}) {
 			t.Errorf("%s should not be equal with %s", parsed, []string{test})
 		}
@@ -280,7 +267,6 @@ func TestCommonRegex_StreetAddresses(t *testing.T) {
 }
 
 func TestCommonRegex_ZipCodes(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"02540",
 		"02540-4119",
@@ -290,13 +276,13 @@ func TestCommonRegex_ZipCodes(t *testing.T) {
 		"123456",
 	}
 	for _, test := range tests {
-		parsed := parser.ZipCodes(test)
+		parsed := ZipCodes(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
 	}
 	for _, test := range failingTests {
-		parsed := parser.ZipCodes(test)
+		parsed := ZipCodes(test)
 		if reflect.DeepEqual(parsed, []string{test}) {
 			t.Errorf("%s should not be equal with %s", parsed, []string{test})
 		}
@@ -304,7 +290,6 @@ func TestCommonRegex_ZipCodes(t *testing.T) {
 }
 
 func TestCommonRegex_PoBoxes(t *testing.T) {
-	parser := New()
 	tests := []string{
 		"PO Box 123456",
 		"p.o. box 234234",
@@ -313,13 +298,13 @@ func TestCommonRegex_PoBoxes(t *testing.T) {
 		"101 main straight",
 	}
 	for _, test := range tests {
-		parsed := parser.PoBoxes(test)
+		parsed := PoBoxes(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
 	}
 	for _, test := range failingTests {
-		parsed := parser.PoBoxes(test)
+		parsed := PoBoxes(test)
 		if reflect.DeepEqual(parsed, []string{test}) {
 			t.Errorf("%s should not be equal with %s", parsed, []string{test})
 		}

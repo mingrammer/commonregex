@@ -21,75 +21,69 @@ const (
 	SSNPattern            = `(?:\d{3}-\d{2}-\d{4})`
 )
 
-type commonRegex struct{}
-
-func New() *commonRegex {
-	return &commonRegex{}
-}
-
 func match(text, pattern string) []string {
 	dateRegexp := regexp.MustCompile(pattern)
 	parsed := dateRegexp.FindAllString(text, -1)
 	return parsed
 }
 
-func (cr *commonRegex) Date(text string) []string {
+func Date(text string) []string {
 	return match(text, DatePattern)
 }
 
-func (cr *commonRegex) Time(text string) []string {
+func Time(text string) []string {
 	return match(text, TimePattern)
 }
 
-func (cr *commonRegex) Phones(text string) []string {
+func Phones(text string) []string {
 	return match(text, PhonePattern)
 }
 
-func (cr *commonRegex) PhonesWithExts(text string) []string {
+func PhonesWithExts(text string) []string {
 	return match(text, PhonesWithExtsPattern)
 }
 
-func (cr *commonRegex) Links(text string) []string {
+func Links(text string) []string {
 	return match(text, LinkPattern)
 }
 
-func (cr *commonRegex) Emails(text string) []string {
+func Emails(text string) []string {
 	return match(text, EmailPattern)
 }
 
-func (cr *commonRegex) IPs(text string) []string {
+func IPs(text string) []string {
 	return match(text, IPPattern)
 }
 
-func (cr *commonRegex) IPv6s(text string) []string {
+func IPv6s(text string) []string {
 	return match(text, IPv6Pattern)
 }
 
-func (cr *commonRegex) Prices(text string) []string {
+func Prices(text string) []string {
 	return match(text, PricePattern)
 }
 
-func (cr *commonRegex) HexColors(text string) []string {
+func HexColors(text string) []string {
 	return match(text, HexColorPattern)
 }
 
-func (cr *commonRegex) CreditCards(text string) []string {
+func CreditCards(text string) []string {
 	return match(text, CreditCardPattern)
 }
 
-func (cr *commonRegex) BtcAddresses(text string) []string {
+func BtcAddresses(text string) []string {
 	return match(text, BtcAddressPattern)
 }
 
-func (cr *commonRegex) StreetAddresses(text string) []string {
+func StreetAddresses(text string) []string {
 	return match(text, StreetAddressPattern)
 }
 
-func (cr *commonRegex) ZipCodes(text string) []string {
+func ZipCodes(text string) []string {
 	return match(text, ZipCodePattern)
 }
 
-func (cr *commonRegex) PoBoxes(text string) []string {
+func PoBoxes(text string) []string {
 	return match(text, PoBoxPattern)
 }
 
