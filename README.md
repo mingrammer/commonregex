@@ -53,3 +53,4 @@ func main() {
 * street address
 * zip code
 * po box
+* SSN
