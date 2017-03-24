@@ -19,6 +19,10 @@ const (
 	ZipCodePattern        = `\b\d{5}(?:[-\s]\d{4})?\b`
 	PoBoxPattern          = `(?i)P\.? ?O\.? Box \d+`
 	SSNPattern            = `(?:\d{3}-\d{2}-\d{4})`
+	MD5HexPattern         = `[0-9a-fA-F]{32}`
+	SHA1HexPattern        = `[0-9a-fA-F]{40}`
+	SHA256HexPattern      = `[0-9a-fA-F]{64}`
+	GUIDPattern           = `[0-9a-fA-F]{8}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{12}`
 )
 
 func match(text, pattern string) []string {
@@ -89,4 +93,20 @@ func PoBoxes(text string) []string {
 
 func SSNs(text string) []string {
 	return match(text, SSNPattern)
+}
+
+func MD5Hexes(text string) []string {
+	return match(text, MD5HexPattern)
+}
+
+func SHA1Hexes(text string) []string {
+	return match(text, SHA1HexPattern)
+}
+
+func SHA256Hexes(text string) []string {
+	return match(text, SHA256HexPattern)
+}
+
+func GUIDs(text string) []string {
+	return match(text, GUIDPattern)
 }
