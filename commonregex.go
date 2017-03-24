@@ -87,6 +87,6 @@ func PoBoxes(text string) []string {
 	return match(text, PoBoxPattern)
 }
 
-func (cr *commonRegex) SSNs(text string) []string {
+func SSNs(text string) []string {
 	return match(text, SSNPattern)
 }
