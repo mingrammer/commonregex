@@ -18,6 +18,7 @@ const (
 	StreetAddressPattern  = `\d{1,4} [\w\s]{1,20}(?:street|st|avenue|ave|road|rd|highway|hwy|square|sq|trail|trl|drive|dr|court|ct|park|parkway|pkwy|circle|cir|boulevard|blvd)\W?`
 	ZipCodePattern        = `\b\d{5}(?:[-\s]\d{4})?\b`
 	PoBoxPattern          = `(?i)P\.? ?O\.? Box \d+`
+	SSNPattern            = `(?:\d{3}-\d{2}-\d{4})`
 )
 
 type commonRegex struct{}
@@ -90,4 +91,8 @@ func (cr *commonRegex) ZipCodes(text string) []string {
 
 func (cr *commonRegex) PoBoxes(text string) []string {
 	return match(text, PoBoxPattern)
+}
+
+func (cr *commonRegex) SSNs(text string) []string {
+	return match(text, SSNPattern)
 }

@@ -325,3 +325,19 @@ func TestCommonRegex_PoBoxes(t *testing.T) {
 		}
 	}
 }
+
+func TestCommonRegex_SSNs(t *testing.T) {
+	parser := New()
+	tests := []string{
+		"000-00-0000",
+		"111-11-1111",
+		"222-22-2222",
+		"123-45-6789",
+	}
+	for _, test := range tests {
+		parsed := parser.SSNs(test)
+		if reflect.DeepEqual(parsed, []string{test}) == false {
+			t.Errorf("%s is not matched with %s", parsed, []string{test})
+		}
+	}
+}
