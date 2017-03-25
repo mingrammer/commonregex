@@ -52,3 +52,7 @@ func main() {
 * zip code
 * po box
 * SSN
+* MD5
+* SHA1
+* SHA256
+* GUID
