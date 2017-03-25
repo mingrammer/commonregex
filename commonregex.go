@@ -14,6 +14,8 @@ const (
 	PricePattern          = `[$]\s?[+-]?[0-9]{1,3}(?:(?:,?[0-9]{3}))*(?:\.[0-9]{1,2})?`
 	HexColorPattern       = `(?:#?([0-9a-fA-F]{6}|[0-9a-fA-F]{3}))`
 	CreditCardPattern     = `(?:(?:(?:\d{4}[- ]?){3}\d{4}|\d{15,16}))`
+	VISACreditCardPattern = `4\d{3}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}`
+	MCCreditCardPattern   = `5[1-5]\d{2}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}`
 	BtcAddressPattern     = `[13][a-km-zA-HJ-NP-Z1-9]{25,34}`
 	StreetAddressPattern  = `\d{1,4} [\w\s]{1,20}(?:street|st|avenue|ave|road|rd|highway|hwy|square|sq|trail|trl|drive|dr|court|ct|park|parkway|pkwy|circle|cir|boulevard|blvd)\W?`
 	ZipCodePattern        = `\b\d{5}(?:[-\s]\d{4})?\b`
@@ -23,6 +25,8 @@ const (
 	SHA1HexPattern        = `[0-9a-fA-F]{40}`
 	SHA256HexPattern      = `[0-9a-fA-F]{64}`
 	GUIDPattern           = `[0-9a-fA-F]{8}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{4}-?[a-fA-F0-9]{12}`
+	ISBN13Pattern         = `(?:[\d]-?){12}[\dxX]`
+	ISBN10Pattern         = `(?:[\d]-?){9}[\dxX]`
 )
 
 func match(text, pattern string) []string {
@@ -109,4 +113,20 @@ func SHA256Hexes(text string) []string {
 
 func GUIDs(text string) []string {
 	return match(text, GUIDPattern)
+}
+
+func ISBN13s(text string) []string {
+	return match(text, ISBN13Pattern)
+}
+
+func ISBN10s(text string) []string {
+	return match(text, ISBN10Pattern)
+}
+
+func VISACreditCards(text string) []string {
+	return match(text, VISACreditCardPattern)
+}
+
+func MCCreditCards(text string) []string {
+	return match(text, MCCreditCardPattern)
 }
