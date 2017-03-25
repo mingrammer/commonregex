@@ -325,3 +325,116 @@ func TestCommonRegex_SSNs(t *testing.T) {
 		}
 	}
 }
+
+func TestCommonRegex_MD5Hexes(t *testing.T) {
+	tests := []string{
+		"b5ab01fad5a008d436f76aafc896f9c6",
+		"00000000000000000000000000000000",
+		"fffFFFfFFfFFFfFFFFfFfFfffffFfFFF",
+	}
+
+	failingTests := []string{
+		"b5ab01fad5a008d436f76aafc896f9c600000000",
+		"",
+		"7TS5x1trQs652k4AZ3hJE83YCvJRy0U8",
+		"b5ab01fad5a008-436f76aafc896f9c6",
+	}
+	for _, test := range tests {
+		parsed := MD5Hexes(test)
+		if reflect.DeepEqual(parsed, []string{test}) == false {
+			t.Errorf("%s is not matched with %s", parsed, []string{test})
+		}
+	}
+	for _, test := range failingTests {
+		parsed := MD5Hexes(test)
+		if reflect.DeepEqual(parsed, []string{test}) {
+			t.Errorf("%s should not be equal with %s", parsed, []string{test})
+		}
+	}
+}
+
+func TestCommonRegex_SHA1Hexes(t *testing.T) {
+	tests := []string{
+		"b5ab01fad5a008d436f76aafc896f9c6abcd1234",
+		"0000000000000000000000000000000000000000",
+		"fffFFFfFFfFFFfFFFFfFfFfffffFfFFFffffFFFF",
+	}
+
+	failingTests := []string{
+		"b5ab01fad5a008d436f76aafc896f9c600000000202020202020202020202020",
+		"",
+		"7TS5x1trQs652k4AZ3hJE83YCvJRy0U85x1trQs652k4AZ3hJE83YCvJRy0U8asd",
+		"b5ab01fad5a008-436f76aafc896f9c6-436f76aafc896f9c6-436f76aafc896",
+	}
+	for _, test := range tests {
+		parsed := SHA1Hexes(test)
+		if reflect.DeepEqual(parsed, []string{test}) == false {
+			t.Errorf("%s is not matched with %s", parsed, []string{test})
+		}
+	}
+	for _, test := range failingTests {
+		parsed := SHA1Hexes(test)
+		if reflect.DeepEqual(parsed, []string{test}) {
+			t.Errorf("%s should not be equal with %s", parsed, []string{test})
+		}
+	}
+}
+
+func TestCommonRegex_SHA256Hexes(t *testing.T) {
+	tests := []string{
+		"3f4146a1d0b5dac26562ff7dc6248573f4e996cf764a0f517318ff398dcfa792",
+		"0000000000000000000000000000000000000000000000000000000000000000",
+		"fffFFFfFFfFFFfFFFFfFfFfffffFfFFFffffFFFFfffffFFFFFffFFffFFffFFff",
+	}
+
+	failingTests := []string{
+		"3f4146a1d0b5dac26562ff7dc6248573f4e996cf764a0f517318ff398dcfa7920",
+		"",
+		"e9iLS075z9HAJlUWg2ZpK5hRxjLeSpIqMKJO67c739VYf7Bj7eR1WjOO82IHcXVd",
+		"b5ab01fad5a008-436f76aafc896f9c6-436f76aafc896f9c6-436f76aafc896",
+	}
+	for _, test := range tests {
+		parsed := SHA256Hexes(test)
+		if reflect.DeepEqual(parsed, []string{test}) == false {
+			t.Errorf("%s is not matched with %s", parsed, []string{test})
+		}
+	}
+	for _, test := range failingTests {
+		parsed := SHA256Hexes(test)
+		if reflect.DeepEqual(parsed, []string{test}) {
+			t.Errorf("%s should not be equal with %s", parsed, []string{test})
+		}
+	}
+}
+
+func TestCommonRegex_GUIDs(t *testing.T) {
+	tests := []string{
+		"00000000-0000-0000-0000-000000000000",
+		"00000000000000000000000000000000",
+		"88a310ed-0ac0-4a3d-b3a2-958fa291d061",
+		"27143ecab8a440cda6fb6effcf9b3c75",
+	}
+
+	failingTests := []string{
+		"88a310ed-0ac0_4a3d_b3a2_958fa291d061",
+		"88a310ed 0ac0 4a3d b3a2 958fa291d061",
+		"",
+		"Z8a310ed-0ac0-4a3d-b3a2-958fa291d061",
+		"88a310ed-zac0-4a3d-b3a2-958fa291d061",
+		"98a310ed-0ac0-za3d-b3a2-958fa291d061",
+		"88a310ed-0ac0-4a3d-z3a2-958fa291d061",
+		"88a310ed-0ac0-4a3d-b3a2-z58fa291d061",
+	}
+	for _, test := range tests {
+		parsed := GUIDs(test)
+		if reflect.DeepEqual(parsed, []string{test}) == false {
+			t.Errorf("%s is not matched with %s", parsed, []string{test})
+		}
+	}
+	for _, test := range failingTests {
+		parsed := GUIDs(test)
+		if reflect.DeepEqual(parsed, []string{test}) {
+			t.Errorf("%s should not be equal with %s", parsed, []string{test})
+		}
+	}
+}
