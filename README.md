@@ -47,6 +47,9 @@ func main() {
 * price
 * hex color
 * credit card
+* VISA credit card
+* MC credit card
+* ISBN 10/13
 * btc address
 * street address
 * zip code

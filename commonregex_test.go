@@ -438,3 +438,106 @@ func TestCommonRegex_GUIDs(t *testing.T) {
 		}
 	}
 }
+
+func TestCommonRegex_ISBN13s(t *testing.T) {
+	tests := []string{
+		"978-3-16-148410-0",
+		"978-1-56619-909-4",
+		"133-1-12144-909-9",
+	}
+	
+	failingTests := []string{
+		"1-56619-909-3",
+		"1-33342-100-1",
+		"2-33342-362-9",
+	}
+	for _, test := range tests {
+		parsed := ISBN13s(test)
+		if reflect.DeepEqual(parsed, []string{test}) == false {
+			t.Errorf("%s is not matched with %s", parsed, []string{test})
+		}
+	}
+	for _, test := range failingTests {
+		parsed := ISBN13s(test)
+		if reflect.DeepEqual(parsed, []string{test}) {
+			t.Errorf("%s should not be equal with %s", parsed, []string{test})
+		}
+	}
+}
+
+func TestCommonRegex_ISBN10s(t *testing.T) {
+	tests := []string{
+		"1-56619-909-3",
+		"1-33342-100-1",
+		"2-33342-362-9",
+	}
+
+	failingTests := []string{
+		"978-3-16-148410-0",
+		"978-1-56619-909-4",
+		"133-1-12144-909-9",
+	}
+	for _, test := range tests {
+		parsed := ISBN10s(test)
+		if reflect.DeepEqual(parsed, []string{test}) == false {
+			t.Errorf("%s is not matched with %s", parsed, []string{test})
+		}
+	}
+	for _, test := range failingTests {
+		parsed := ISBN10s(test)
+		if reflect.DeepEqual(parsed, []string{test}) {
+			t.Errorf("%s should not be equal with %s", parsed, []string{test})
+		}
+	}
+}
+
+func TestCommonRegex_VISACreditCards(t *testing.T) {
+	tests := []string{
+		"4111 1111 1111 1111",
+		"4222 2222 2222 2222",
+	}
+
+	failingTests := []string{
+		"5500 0000 0000 0004",
+		"3400 0000 0000 009",
+		"3000 0000 0000 04",
+	}
+	for _, test := range tests {
+		parsed := VISACreditCards(test)
+		if reflect.DeepEqual(parsed, []string{test}) == false {
+			t.Errorf("%s is not matched with %s", parsed, []string{test})
+		}
+	}
+	for _, test := range failingTests {
+		parsed := VISACreditCards(test)
+		if reflect.DeepEqual(parsed, []string{test}) {
+			t.Errorf("%s should not be equal with %s", parsed, []string{test})
+		}
+	}
+}
+
+func TestCommonRegex_MCCreditCards(t *testing.T) {
+	tests := []string{
+		"5500 0000 0000 0004",
+		"5500 3334 0000 1234",
+	}
+
+	failingTests := []string{
+		"4111 1111 1111 1111",
+		"4222 2222 2222 2222",
+		"3400 0000 0000 009",
+		"3000 0000 0000 04",
+	}
+	for _, test := range tests {
+		parsed := MCCreditCards(test)
+		if reflect.DeepEqual(parsed, []string{test}) == false {
+			t.Errorf("%s is not matched with %s", parsed, []string{test})
+		}
+	}
+	for _, test := range failingTests {
+		parsed := MCCreditCards(test)
+		if reflect.DeepEqual(parsed, []string{test}) {
+			t.Errorf("%s should not be equal with %s", parsed, []string{test})
+		}
+	}
+}
