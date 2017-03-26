@@ -30,8 +30,8 @@ const (
 )
 
 func match(text, pattern string) []string {
-	dateRegexp := regexp.MustCompile(pattern)
-	parsed := dateRegexp.FindAllString(text, -1)
+	compiledRegexp := regexp.MustCompile(pattern)
+	parsed := compiledRegexp.FindAllString(text, -1)
 	return parsed
 }
 
