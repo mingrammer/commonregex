@@ -132,6 +132,6 @@ func MCCreditCards(text string) []string {
 	return match(text, MCCreditCardPattern)
 }
 
-func MACAddress(text string) []string {
+func MACAddresses(text string) []string {
 	return match(text, MACAddressPattern)
 }
