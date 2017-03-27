@@ -103,6 +103,7 @@ func TestCommonRegex_Emails(t *testing.T) {
 		"john.smith@gmail.com",
 		"john_smith@gmail.com",
 		"john@example.net",
+		"John@example.net",
 	}
 	failingTests := []string{
 		"john.smith@gmail..com",
@@ -445,7 +446,7 @@ func TestCommonRegex_ISBN13s(t *testing.T) {
 		"978-1-56619-909-4",
 		"133-1-12144-909-9",
 	}
-	
+
 	failingTests := []string{
 		"1-56619-909-3",
 		"1-33342-100-1",
@@ -536,6 +537,31 @@ func TestCommonRegex_MCCreditCards(t *testing.T) {
 	}
 	for _, test := range failingTests {
 		parsed := MCCreditCards(test)
+		if reflect.DeepEqual(parsed, []string{test}) {
+			t.Errorf("%s should not be equal with %s", parsed, []string{test})
+		}
+	}
+}
+
+func TestCommonRegex_MACAddresses(t *testing.T) {
+	tests := []string{
+		"f8:2f:a4:fe:76:d2",
+		"F8:2F:A4:FE:76:D2",
+		"3D-F2-C9-A6-B3-4F",
+	}
+
+	failingTests := []string{
+		"3D:F2:C9:A6:B3:4G",
+		"f0:2f:P4:Be:96:J5",
+	}
+	for _, test := range tests {
+		parsed := MACAddresses(test)
+		if reflect.DeepEqual(parsed, []string{test}) == false {
+			t.Errorf("%s is not matched with %s", parsed, []string{test})
+		}
+	}
+	for _, test := range failingTests {
+		parsed := MACAddresses(test)
 		if reflect.DeepEqual(parsed, []string{test}) {
 			t.Errorf("%s should not be equal with %s", parsed, []string{test})
 		}

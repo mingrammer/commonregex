@@ -59,3 +59,4 @@ func main() {
 * SHA1
 * SHA256
 * GUID
+* MAC address
