@@ -28,6 +28,7 @@ const (
 	ISBN13Pattern         = `(?:[\d]-?){12}[\dxX]`
 	ISBN10Pattern         = `(?:[\d]-?){9}[\dxX]`
 	MACAddressPattern     = `(([a-fA-F0-9]{2}[:-]){5}([a-fA-F0-9]{2}))`
+	IBANPattern           = `[A-Z]{2}\d{2}[A-Z0-9]{4}\d{7}([A-Z\d]?){0,16}`
 )
 
 func match(text, pattern string) []string {
@@ -134,4 +135,8 @@ func MCCreditCards(text string) []string {
 
 func MACAddresses(text string) []string {
 	return match(text, MACAddressPattern)
+}
+
+func IBAN(text string) []string {
+	return match(text, IBANPattern)
 }

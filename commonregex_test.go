@@ -567,3 +567,30 @@ func TestCommonRegex_MACAddresses(t *testing.T) {
 		}
 	}
 }
+
+func TestCommonRegex_IBAN(t *testing.T) {
+	tests := []string{
+		"FR1420041010050500013M02606",
+		"MU17BOMM0101101030300200000MUR",
+		"NO9386011117947",
+	}
+
+	failingTests := []string{
+		"424220041010050500013M02606",
+		"GB29RBOS601613",
+	}
+
+	for _, test := range tests {
+		parsed := IBAN(test)
+		if reflect.DeepEqual(parsed, []string{test}) == false {
+			t.Errorf("%s is not matched with %s", parsed, []string{test})
+		}
+	}
+
+	for _, test := range failingTests {
+		parsed := IBAN(test)
+		if reflect.DeepEqual(parsed, []string{test}) {
+			t.Errorf("%s should not be equal with %s", parsed, []string{test})
+		}
+	}
+}
