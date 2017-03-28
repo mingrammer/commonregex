@@ -137,6 +137,6 @@ func MACAddresses(text string) []string {
 	return match(text, MACAddressPattern)
 }
 
-func IBAN(text string) []string {
+func IBANs(text string) []string {
 	return match(text, IBANPattern)
 }

@@ -581,14 +581,14 @@ func TestCommonRegex_IBAN(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		parsed := IBAN(test)
+		parsed := IBANs(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
 	}
 
 	for _, test := range failingTests {
-		parsed := IBAN(test)
+		parsed := IBANs(test)
 		if reflect.DeepEqual(parsed, []string{test}) {
 			t.Errorf("%s should not be equal with %s", parsed, []string{test})
 		}
