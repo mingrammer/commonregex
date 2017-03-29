@@ -333,7 +333,6 @@ func TestCommonRegex_MD5Hexes(t *testing.T) {
 		"00000000000000000000000000000000",
 		"fffFFFfFFfFFFfFFFFfFfFfffffFfFFF",
 	}
-
 	failingTests := []string{
 		"b5ab01fad5a008d436f76aafc896f9c600000000",
 		"",
@@ -360,7 +359,6 @@ func TestCommonRegex_SHA1Hexes(t *testing.T) {
 		"0000000000000000000000000000000000000000",
 		"fffFFFfFFfFFFfFFFFfFfFfffffFfFFFffffFFFF",
 	}
-
 	failingTests := []string{
 		"b5ab01fad5a008d436f76aafc896f9c600000000202020202020202020202020",
 		"",
@@ -387,7 +385,6 @@ func TestCommonRegex_SHA256Hexes(t *testing.T) {
 		"0000000000000000000000000000000000000000000000000000000000000000",
 		"fffFFFfFFfFFFfFFFFfFfFfffffFfFFFffffFFFFfffffFFFFFffFFffFFffFFff",
 	}
-
 	failingTests := []string{
 		"3f4146a1d0b5dac26562ff7dc6248573f4e996cf764a0f517318ff398dcfa7920",
 		"",
@@ -415,7 +412,6 @@ func TestCommonRegex_GUIDs(t *testing.T) {
 		"88a310ed-0ac0-4a3d-b3a2-958fa291d061",
 		"27143ecab8a440cda6fb6effcf9b3c75",
 	}
-
 	failingTests := []string{
 		"88a310ed-0ac0_4a3d_b3a2_958fa291d061",
 		"88a310ed 0ac0 4a3d b3a2 958fa291d061",
@@ -446,7 +442,6 @@ func TestCommonRegex_ISBN13s(t *testing.T) {
 		"978-1-56619-909-4",
 		"133-1-12144-909-9",
 	}
-
 	failingTests := []string{
 		"1-56619-909-3",
 		"1-33342-100-1",
@@ -472,7 +467,6 @@ func TestCommonRegex_ISBN10s(t *testing.T) {
 		"1-33342-100-1",
 		"2-33342-362-9",
 	}
-
 	failingTests := []string{
 		"978-3-16-148410-0",
 		"978-1-56619-909-4",
@@ -482,6 +476,7 @@ func TestCommonRegex_ISBN10s(t *testing.T) {
 		parsed := ISBN10s(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
+			w
 		}
 	}
 	for _, test := range failingTests {
@@ -497,7 +492,6 @@ func TestCommonRegex_VISACreditCards(t *testing.T) {
 		"4111 1111 1111 1111",
 		"4222 2222 2222 2222",
 	}
-
 	failingTests := []string{
 		"5500 0000 0000 0004",
 		"3400 0000 0000 009",
@@ -522,7 +516,6 @@ func TestCommonRegex_MCCreditCards(t *testing.T) {
 		"5500 0000 0000 0004",
 		"5500 3334 0000 1234",
 	}
-
 	failingTests := []string{
 		"4111 1111 1111 1111",
 		"4222 2222 2222 2222",
@@ -549,7 +542,6 @@ func TestCommonRegex_MACAddresses(t *testing.T) {
 		"F8:2F:A4:FE:76:D2",
 		"3D-F2-C9-A6-B3-4F",
 	}
-
 	failingTests := []string{
 		"3D:F2:C9:A6:B3:4G",
 		"f0:2f:P4:Be:96:J5",
@@ -574,19 +566,16 @@ func TestCommonRegex_IBANs(t *testing.T) {
 		"MU17BOMM0101101030300200000MUR",
 		"NO9386011117947",
 	}
-
 	failingTests := []string{
 		"424220041010050500013M02606",
 		"GB29RBOS601613",
 	}
-
 	for _, test := range tests {
 		parsed := IBANs(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
 		}
 	}
-
 	for _, test := range failingTests {
 		parsed := IBANs(test)
 		if reflect.DeepEqual(parsed, []string{test}) {
