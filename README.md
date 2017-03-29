@@ -60,3 +60,4 @@ func main() {
 * SHA256
 * GUID
 * MAC address
+* IBAN
