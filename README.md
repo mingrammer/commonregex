@@ -61,3 +61,12 @@ func main() {
 * GUID
 * MAC address
 * IBAN
+
+## Thanks to :heart:
+
+* [@cschoede](https://github.com/cschoede)
+* [@schigh](https://github.com/schigh)
+* [@emaraschio](https://github.com/emaraschio)
+* [@mamal72](https://github.com/mamal72)
+* [@ahmdrz](https://github.com/ahmdrz)
+* [@fakenine](https://github.com/fakenine)
