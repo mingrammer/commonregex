@@ -476,7 +476,6 @@ func TestCommonRegex_ISBN10s(t *testing.T) {
 		parsed := ISBN10s(test)
 		if reflect.DeepEqual(parsed, []string{test}) == false {
 			t.Errorf("%s is not matched with %s", parsed, []string{test})
-			w
 		}
 	}
 	for _, test := range failingTests {
