@@ -568,7 +568,7 @@ func TestCommonRegex_MACAddresses(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_IBAN(t *testing.T) {
+func TestCommonRegex_IBANs(t *testing.T) {
 	tests := []string{
 		"FR1420041010050500013M02606",
 		"MU17BOMM0101101030300200000MUR",
