@@ -31,112 +31,140 @@ const (
 	IBANPattern           = `[A-Z]{2}\d{2}[A-Z0-9]{4}\d{7}([A-Z\d]?){0,16}`
 )
 
-func match(text, pattern string) []string {
-	compiledRegexp := regexp.MustCompile(pattern)
-	parsed := compiledRegexp.FindAllString(text, -1)
+var (
+	DateRegex           = regexp.MustCompile(DatePattern)
+	TimeRegex           = regexp.MustCompile(TimePattern)
+	PhoneRegex          = regexp.MustCompile(PhonePattern)
+	PhonesWithExtsRegex = regexp.MustCompile(PhonesWithExtsPattern)
+	LinkRegex           = regexp.MustCompile(LinkPattern)
+	EmailRegex          = regexp.MustCompile(EmailPattern)
+	IPRegex             = regexp.MustCompile(IPPattern)
+	IPv6Regex           = regexp.MustCompile(IPv6Pattern)
+	PriceRegex          = regexp.MustCompile(PricePattern)
+	HexColorRegex       = regexp.MustCompile(HexColorPattern)
+	CreditCardRegex     = regexp.MustCompile(CreditCardPattern)
+	BtcAddressRegex     = regexp.MustCompile(BtcAddressPattern)
+	StreetAddressRegex  = regexp.MustCompile(StreetAddressPattern)
+	ZipCodeRegex        = regexp.MustCompile(ZipCodePattern)
+	PoBoxRegex          = regexp.MustCompile(PoBoxPattern)
+	SSNRegex            = regexp.MustCompile(SSNPattern)
+	MD5HexRegex         = regexp.MustCompile(MD5HexPattern)
+	SHA1HexRegex        = regexp.MustCompile(SHA1HexPattern)
+	SHA256HexRegex      = regexp.MustCompile(SHA256HexPattern)
+	GUIDRegex           = regexp.MustCompile(GUIDPattern)
+	ISBN13Regex         = regexp.MustCompile(ISBN13Pattern)
+	ISBN10Regex         = regexp.MustCompile(ISBN10Pattern)
+	VISACreditCardRegex = regexp.MustCompile(VISACreditCardPattern)
+	MCCreditCardRegex   = regexp.MustCompile(MCCreditCardPattern)
+	MACAddressRegex     = regexp.MustCompile(MACAddressPattern)
+	IBANRegex           = regexp.MustCompile(IBANPattern)
+)
+
+func match(text string, regex *regexp.Regexp) []string {
+	parsed := regex.FindAllString(text, -1)
 	return parsed
 }
 
 func Date(text string) []string {
-	return match(text, DatePattern)
+	return match(text, DateRegex)
 }
 
 func Time(text string) []string {
-	return match(text, TimePattern)
+	return match(text, TimeRegex)
 }
 
 func Phones(text string) []string {
-	return match(text, PhonePattern)
+	return match(text, PhoneRegex)
 }
 
 func PhonesWithExts(text string) []string {
-	return match(text, PhonesWithExtsPattern)
+	return match(text, PhonesWithExtsRegex)
 }
 
 func Links(text string) []string {
-	return match(text, LinkPattern)
+	return match(text, LinkRegex)
 }
 
 func Emails(text string) []string {
-	return match(text, EmailPattern)
+	return match(text, EmailRegex)
 }
 
 func IPs(text string) []string {
-	return match(text, IPPattern)
+	return match(text, IPRegex)
 }
 
 func IPv6s(text string) []string {
-	return match(text, IPv6Pattern)
+	return match(text, IPv6Regex)
 }
 
 func Prices(text string) []string {
-	return match(text, PricePattern)
+	return match(text, PriceRegex)
 }
 
 func HexColors(text string) []string {
-	return match(text, HexColorPattern)
+	return match(text, HexColorRegex)
 }
 
 func CreditCards(text string) []string {
-	return match(text, CreditCardPattern)
+	return match(text, CreditCardRegex)
 }
 
 func BtcAddresses(text string) []string {
-	return match(text, BtcAddressPattern)
+	return match(text, BtcAddressRegex)
 }
 
 func StreetAddresses(text string) []string {
-	return match(text, StreetAddressPattern)
+	return match(text, StreetAddressRegex)
 }
 
 func ZipCodes(text string) []string {
-	return match(text, ZipCodePattern)
+	return match(text, ZipCodeRegex)
 }
 
 func PoBoxes(text string) []string {
-	return match(text, PoBoxPattern)
+	return match(text, PoBoxRegex)
 }
 
 func SSNs(text string) []string {
-	return match(text, SSNPattern)
+	return match(text, SSNRegex)
 }
 
 func MD5Hexes(text string) []string {
-	return match(text, MD5HexPattern)
+	return match(text, MD5HexRegex)
 }
 
 func SHA1Hexes(text string) []string {
-	return match(text, SHA1HexPattern)
+	return match(text, SHA1HexRegex)
 }
 
 func SHA256Hexes(text string) []string {
-	return match(text, SHA256HexPattern)
+	return match(text, SHA256HexRegex)
 }
 
 func GUIDs(text string) []string {
-	return match(text, GUIDPattern)
+	return match(text, GUIDRegex)
 }
 
 func ISBN13s(text string) []string {
-	return match(text, ISBN13Pattern)
+	return match(text, ISBN13Regex)
 }
 
 func ISBN10s(text string) []string {
-	return match(text, ISBN10Pattern)
+	return match(text, ISBN10Regex)
 }
 
 func VISACreditCards(text string) []string {
-	return match(text, VISACreditCardPattern)
+	return match(text, VISACreditCardRegex)
 }
 
 func MCCreditCards(text string) []string {
-	return match(text, MCCreditCardPattern)
+	return match(text, MCCreditCardRegex)
 }
 
 func MACAddresses(text string) []string {
-	return match(text, MACAddressPattern)
+	return match(text, MACAddressRegex)
 }
 
 func IBANs(text string) []string {
-	return match(text, IBANPattern)
+	return match(text, IBANRegex)
 }
