@@ -29,6 +29,7 @@ const (
 	ISBN10Pattern         = `(?:[\d]-?){9}[\dxX]`
 	MACAddressPattern     = `(([a-fA-F0-9]{2}[:-]){5}([a-fA-F0-9]{2}))`
 	IBANPattern           = `[A-Z]{2}\d{2}[A-Z0-9]{4}\d{7}([A-Z\d]?){0,16}`
+	GitRepoPattern        = `((git|ssh|http(s)?)|(git@[\w\.]+))(:(\/\/)?)([\w\.@\:/\-~]+)(\.git)(\/)?`
 )
 
 var (
@@ -58,6 +59,7 @@ var (
 	MCCreditCardRegex   = regexp.MustCompile(MCCreditCardPattern)
 	MACAddressRegex     = regexp.MustCompile(MACAddressPattern)
 	IBANRegex           = regexp.MustCompile(IBANPattern)
+	GitRepoRegex        = regexp.MustCompile(GitRepoPattern)
 )
 
 func match(text string, regex *regexp.Regexp) []string {
@@ -167,4 +169,8 @@ func MACAddresses(text string) []string {
 
 func IBANs(text string) []string {
 	return match(text, IBANRegex)
+}
+
+func GitRepos(text string) []string {
+	return match(text, GitRepoRegex)
 }

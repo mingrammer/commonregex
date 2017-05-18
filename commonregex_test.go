@@ -635,3 +635,28 @@ func TestCommonRegex_IBANs(t *testing.T) {
 		assert.NotEqual([]string{test}, parsed, "they should not be matched")
 	}
 }
+
+func TestCommonRegex_GitRepos(t *testing.T) {
+	t.Parallel()
+	assert := assert.New(t)
+
+	tests := []string{
+		"https://github.com/mingrammer/commonregex.git",
+		"git@github.com:mingrammer/commonregex.git",
+	}
+
+	failingTests := []string{
+		"https://github.com/mingrammer/commonregex",
+		"test@github.com:mingrammer/commonregex.git",
+	}
+
+	for _, test := range tests {
+		parsed := GitRepos(test)
+		assert.Equal([]string{test}, parsed, "they should be matched")
+	}
+
+	for _, test := range failingTests {
+		parsed := GitRepos(test)
+		assert.NotEqual([]string{test}, parsed, "they should not be matched")
+	}
+}
