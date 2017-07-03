@@ -135,7 +135,7 @@ func TestCommonRegex_Emails(t *testing.T) {
 	}
 }
 
-func TestCommonRegex_IPs(t *testing.T) {
+func TestCommonRegex_IPv4s(t *testing.T) {
 	t.Parallel()
 	assert := assert.New(t)
 
@@ -166,6 +166,46 @@ func TestCommonRegex_IPv6s(t *testing.T) {
 
 	for _, test := range tests {
 		parsed := IPv6s(test)
+		assert.Equal([]string{test}, parsed, "they should be matched")
+	}
+}
+
+func TestCommonRegex_IPs(t *testing.T) {
+	t.Parallel()
+	assert := assert.New(t)
+
+	tests := []string{
+		"127.0.0.1",
+		"192.168.1.1",
+		"8.8.8.8",
+		"fe80:0000:0000:0000:0204:61ff:fe9d:f156",
+		"fe80:0:0:0:204:61ff:fe9d:f156",
+		"fe80::204:61ff:fe9d:f156",
+		"fe80:0000:0000:0000:0204:61ff:254.157.241.86",
+		"fe80:0:0:0:0204:61ff:254.157.241.86",
+		"::1",
+	}
+
+	for _, test := range tests {
+		parsed := IPs(test)
+		assert.Equal([]string{test}, parsed, "they should be matched")
+	}
+}
+
+func TestCommonRegex_NotKnownPorts(t *testing.T) {
+	t.Parallel()
+	assert := assert.New(t)
+
+	tests := []string{
+		"1024",
+		"2121",
+		"8080",
+		"12345",
+		"65536",
+	}
+
+	for _, test := range tests {
+		parsed := NotKnownPorts(test)
 		assert.Equal([]string{test}, parsed, "they should be matched")
 	}
 }

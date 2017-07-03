@@ -42,8 +42,10 @@ func main() {
 * phones with exts
 * link
 * email
-* ip
+* ipv4
 * ipv6
+* ip
+* ports without well-known (not known ports)
 * price
 * hex color
 * credit card
