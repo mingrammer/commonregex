@@ -201,7 +201,7 @@ func TestCommonRegex_NotKnownPorts(t *testing.T) {
 		"2121",
 		"8080",
 		"12345",
-		"55555"
+		"55555",
 		"65536",
 	}
 
