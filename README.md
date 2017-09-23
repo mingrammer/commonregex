@@ -1,4 +1,4 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/mingrammer/commonregex)](https://goreportcard.com/report/github.com/mingrammer/commonregex) ![build](https://travis-ci.org/mingrammer/commonregex.svg?branch=master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mingrammer/commonregex)](https://goreportcard.com/report/github.com/mingrammer/commonregex) ![build](https://travis-ci.org/mingrammer/commonregex.svg?branch=master) [![Godoc](https://godoc.org/github.com/mingrammer/commonregex?status.svg)](https://godoc.org/github.com/mingrammer/commonregex)
 
 # commonregex
 
@@ -36,26 +36,26 @@ func main() {
 
 ## Features
 
-* date
-* time
-* phone
-* phones with exts
-* link
-* email
-* ipv4
-* ipv6
-* ip
-* ports without well-known (not known ports)
-* price
-* hex color
-* credit card
+* Date
+* Time
+* Phone
+* Phones with exts
+* Link
+* Email
+* IPv4
+* IPv6
+* IP
+* Ports without well-known (not known ports)
+* Price
+* Hex color
+* Credit card
 * VISA credit card
 * MC credit card
 * ISBN 10/13
-* btc address
-* street address
-* zip code
-* po box
+* BTC address
+* Street address
+* Zip code
+* Po box
 * SSN
 * MD5
 * SHA1
