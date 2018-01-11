@@ -1,6 +1,19 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/mingrammer/commonregex)](https://goreportcard.com/report/github.com/mingrammer/commonregex) ![build](https://travis-ci.org/mingrammer/commonregex.svg?branch=master) [![Godoc](https://godoc.org/github.com/mingrammer/commonregex?status.svg)](https://godoc.org/github.com/mingrammer/commonregex)
+<br><br>
 
-# commonregex
+<h1 align="center">CommonRegex</h1>
+
+<p align="center">
+  <a href="/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg"/></a>
+  <a href="https://goreportcard.com/report/github.com/mingrammer/commonregex"><img src="https://goreportcard.com/badge/github.com/mingrammer/commonregex"/></a>
+  <a href="https://godoc.org/github.com/mingrammer/commonregex"><img src="https://godoc.org/github.com/mingrammer/commonregex?status.svg"/></a>
+  <a href="https://travis-ci.org/mingrammer/pyreportcard"><img src="https://travis-ci.org/mingrammer/pyreportcard.svg?branch=master"/></a>
+</p>
+
+<p align="center">
+  Analyze and report the python projects which are on Github
+</p>
+
+<br><br><br>
 
 > Inspired by [CommonRegex](https://github.com/madisonmay/CommonRegex)
 
