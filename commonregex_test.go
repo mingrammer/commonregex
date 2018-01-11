@@ -204,7 +204,7 @@ func TestCommonRegex_NotKnownPorts(t *testing.T) {
 		"55555",
 		"65535",
 	}
-	
+
 	failingTests := []string{
 		"21",
 		"80",
@@ -216,7 +216,7 @@ func TestCommonRegex_NotKnownPorts(t *testing.T) {
 		parsed := NotKnownPorts(test)
 		assert.Equal([]string{test}, parsed, "they should be matched")
 	}
-	
+
 	for _, test := range failingTests {
 		parsed := Emails(test)
 		assert.NotEqual([]string{test}, parsed, "they should not be matched")
