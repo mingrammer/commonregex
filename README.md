@@ -7,7 +7,7 @@
   <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fmingrammer%2Fcommonregex?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmingrammer%2Fcommonregex.svg?type=shield"/></a>
   <a href="https://goreportcard.com/report/github.com/mingrammer/commonregex"><img src="https://goreportcard.com/badge/github.com/mingrammer/commonregex"/></a>
   <a href="https://godoc.org/github.com/mingrammer/commonregex"><img src="https://godoc.org/github.com/mingrammer/commonregex?status.svg"/></a>
-  <a href="https://travis-ci.org/mingrammer/pyreportcard"><img src="https://travis-ci.org/mingrammer/pyreportcard.svg?branch=master"/></a>
+  <a href="https://travis-ci.org/mingrammer/commonregex"><img src="https://travis-ci.org/mingrammer/commonregex.svg?branch=master"/></a>
   <a href="https://codecov.io/gh/mingrammer/commonregex"><img src="https://codecov.io/gh/mingrammer/commonregex/branch/master/graph/badge.svg" /></a>
 </p>
 
