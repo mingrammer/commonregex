@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  Analyze and report the python projects which are on Github
+  Collection of often used regular expressions written with Go programming language
 </p>
 
 <br><br><br>
