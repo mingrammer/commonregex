@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  Collection of often used regular expressions written with Go programming language
+  A collection of often used regular expressions for Go
 </p>
 
 <br><br><br>
