@@ -89,6 +89,7 @@ func main() {
 * [@ahmdrz](https://github.com/ahmdrz)
 * [@fakenine](https://github.com/fakenine)
 * [@Bill-Park](https://github.com/Bill-Park)
+* [@jakewarren](https://github.com/jakewarren)
 
 ## License
 
